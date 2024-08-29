@@ -15,7 +15,7 @@ This repo demonstrates that using SQLAlchemy's asyncio support with a FastAPI we
 
 On my 2022 MacBook Air (M2, 24GB RAM, Sonoma 14.6.1), `run_test.py` outputs the following results:
 
-### Single Request
+### ✅ Single Request
 
 ```txt
 ------ START ------
@@ -30,7 +30,7 @@ Max: 0.05
 This a control test making 100 requests to just `/ping` which doesn't do much. FastAPI is fast and returns <0.1s.
 
 
-### Concurrent requests to a non-blocking endpoint
+### ✅ Concurrent requests to a non-blocking endpoint
 
 ```txt
 ------ START ------
@@ -68,7 +68,7 @@ Max: 12.61
 In this test, we send 100 concurrent requests to `/count-todos-async` and `/ping`. The `/count-todos-async` endpoint uses SQLAlchemy's `asyncio` support to query the database and run a slightly slow running query. The results show that the `/ping` endpoint is slowed down by the `/count-todos-async` endpoint.  I assume this is because the ASGI event loop is blocked by the SQLAlchemy query (despite using `AsyncSession` and an async DB driver `aiosqlite`).
 
 
-### Concurrent requests to a SQLAlchemy Session endpoint
+### ✅ Concurrent requests to a SQLAlchemy Session endpoint
 
 ```txt
 ------ START ------
