@@ -49,7 +49,7 @@ Max: 10.25
 In this test, we make 100 separate concurrent requests to `/ping` and `/ping-with-async-sleep`. The only insight here is that `/ping` is clearly not slowed down by `/ping-with-async-sleep` as it uses `asyncio.sleep` to simulate a non-blocking operation. There is however a slight performance penalty on `/ping` due to the overhead of managing the concurrent requests.
 
 
-### Concurrent requests to a SQLAlchemy AsyncSession endpoint
+### ⚠️ PROBLEM: Concurrent requests to a SQLAlchemy AsyncSession endpoint ⚠️
 
 ```txt
 ------ START ------
